@@ -7,7 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import InboxSidebar from './InboxSidebar.js'
 import TopAppBar from './TopAppBar.js'
 import EmailBody from './EmailBody.js'
-import NotifierSystem from './res/notices.js'
+import NotifierSystem from './helpers/notices.js'
 
 const Notifier = new NotifierSystem() 
 const styles = theme => ({

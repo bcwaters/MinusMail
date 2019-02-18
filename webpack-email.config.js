@@ -1,4 +1,6 @@
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
 module.exports = {
   entry: './src/tempEmailClient/index.js',
    module: {
@@ -37,5 +39,10 @@ module.exports = {
     path: __dirname + '/dist',
     publicPath: '/',
     filename: 'bundle-email.js'
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+    favicon: "./src/tempEmailClient/res/favicon.ico"
+    })
+    ]
 };

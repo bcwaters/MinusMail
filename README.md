@@ -3,8 +3,14 @@
 
 Temporary emails made fast and simple
 
-clone the repo and run ```npm install ```
+## Stack
+Frontend built with React utilizing Material UI
+Backend is a node express server with socket.io
 
+note: There is a seperate Haraka SMTP server running
+
+## How to run the server
+clone the repo and run ```npm install ```
 To run the server use ``` npm run run-production ```
 
 

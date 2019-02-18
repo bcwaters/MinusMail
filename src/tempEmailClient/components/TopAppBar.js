@@ -4,6 +4,16 @@ import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import SvgIcon from '@material-ui/core/SvgIcon';
+import customSVG from './helpers/CustomSVG.js'
+
+const MinusMailIcon = (props) => (
+  <SvgIcon {...props}>
+    <path d= {customSVG.MinusMailIcon} />
+  </SvgIcon>
+);
+
 
 //zIndex put appbar priority above drawer 
 const styles = theme => ({
@@ -22,9 +32,11 @@ class TopAppBar extends React.Component {
 
 	return (
             <AppBar position='absolute' style={{ backgroundColor: '#5555'}}>
-                <Toolbar>
-                    <Typography variant="h6" color='textPrimary' noWrap>
-                    MinusMail
+                <Toolbar> 
+                    <MinusMailIcon />
+                    
+                    <Typography style={{ marginLeft: 16 }} variant="h6" color='textPrimary' noWrap>
+                        MinusMail
                     </Typography>
                 </Toolbar>
             </AppBar>

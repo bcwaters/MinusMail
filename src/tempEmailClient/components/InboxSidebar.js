@@ -37,13 +37,13 @@ const styles = theme => ({
     deleteIcon:{
         color: 'DarkRed',
         '&:hover': { color: 'red'}},
-    myAddressBox: {
-        backgroundColor: '#00800059',
-  },
     donationBox: {
         marginTop: '20px',
         backgroundColor: 'pink',
-        borderRadius: '10px 0px 0px 10px'
+        borderRadius: '30px 30px 30px 30px',
+        whiteSpace: 'nowrap',
+        textAlign: 'right',
+        boxShadow: '0 5px 10px -2px grey'
   },
       emailText:{
         textOverflow: 'clip',
@@ -113,10 +113,10 @@ class InboxSidebar extends React.Component {
                 </ListItem>
             ))}
             </List> 
-            <div className={classes.donationBox}> 
-                <ListItem button style={{ textAlign: 'right'}}>
+            <div className={classes.donationBox} > 
+                <ListItem button style={{whiteSpace: 'nowrap',textAlign: 'right'}}>
                     <ListItemText 
-                        primary={'Donate to TempMail'}
+                        primary={'Donate to MinusMail'}
                         secondary={<Link>[donate]</Link>} 
                     />
                 </ListItem>  

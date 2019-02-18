@@ -32,7 +32,9 @@ const styles = theme => ({
     },
     fromField: {
         backgroundColor: '#eedcaa',
-        borderRadius: '0px 15px 15px 0px',
+        borderRadius: '15px 15px 0px 0px',
+        marginBottom: '3px',
+        boxShadow: '0 5px 10px -2px grey',
         ...theme.mixins.gutters(),
     },
 });
@@ -47,7 +49,7 @@ class EmailBody extends React.Component {
         <main className={classes.content}>
             <div className={classes.emailContainer}>
                 <div className={classes.fromField} >
-                    <Typography noWrap={true} variant='h6'>
+                    <Typography noWrap={true} variant='subtitle1'>
                         {this.props.currentEmail.from.text} 
                     </Typography>
                     <Typography noWrap={true} variant='subtitle2'>
@@ -59,6 +61,7 @@ class EmailBody extends React.Component {
                         <iframe 
                             srcdoc={this.props.currentEmail.html}
                             style= {{
+                                    margin: '0px',
                                     flexGrow: '1',
                                     width:'100%',
                                     minHeight:'60vh'}}
