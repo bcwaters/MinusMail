@@ -8,16 +8,23 @@ import InboxSidebar from './InboxSidebar.js'
 import TopAppBar from './TopAppBar.js'
 import EmailBody from './EmailBody.js'
 import NotifierSystem from './helpers/notices.js'
+import BottomAppBar from './BottomAppBar.js'
 
 const Notifier = new NotifierSystem() 
 const styles = theme => ({
     root: {
         display: 'flex',
         backgroundColor: '#e9ebee',
+        paddingRight: '30px',
+        paddingLeft: '30px',
+        
     },
     gridContainer: {
         flexGrow: 1 ,
-        height: '95vh',
+        height: '100vh',
+    },
+    mainContent: {
+        minHeight: '70vh'
     },
     fillAppBarSpace: {
         ...theme.mixins.toolbar,
@@ -26,13 +33,18 @@ const styles = theme => ({
     underAppBar: {
         height: '3vh',
     },
+    sideBar: {
+        minWidth: '200px'
+      },
     footerSpace: {
         minHeight:'11vh',
-        borderWidth: '1px',
-        borderStyle: 'solid'},
+        width:'100%',
+        bottom: '0',
+        left: '0',
+	   top: 'auto',
+     },
     adSpace: {
-        borderWidth: '1px',
-        borderStyle: 'solid'},
+      },
 });
 
 
@@ -106,10 +118,11 @@ class EmailViewer extends React.Component {
       <div className={classes.root}>
         <TopAppBar />
         <CssBaseline />
-        <Grid container className={classes.gridContainer} spacing={16}>
-        <Grid item xs={12} className={classes.fillAppBarSpace}/>
-        <Grid item xs={12} className={classes.underAppBar}/>
-            <Grid item xs={2}>
+        <Grid container className={classes.gridContainer} spacing={24}>
+        <Grid   className={classes.fillAppBarSpace}/>
+          
+            <Grid item xs={12} className={classes.underAppBar}/>
+            <Grid item xs={2} className={classes.sideBar}>
             <InboxSidebar
                 container={this.containerRef}
                 emailsReceived={this.state.emailsReceived} 
@@ -119,18 +132,18 @@ class EmailViewer extends React.Component {
                 updateMyAddress={this.updateMyAddress}
             /> 
             </Grid>
-            <Grid item xs={7}>
+            <Grid item xs={8}>
             <EmailBody
                 currentEmail={this.state.currentEmail}
             />
             </Grid>
-            <Grid item xs={3} className={classes.adSpace}>
-                ads go in this area
+            <Grid item xs={2} className={classes.adSpace}> 
             </Grid>
             <Grid item xs={12} className={classes.footerSpace}>
-            footer stuff goes here
+              <BottomAppBar/>
             </Grid>    
-        </Grid>
+        </Grid> 
+          
       </div>
     );
   }

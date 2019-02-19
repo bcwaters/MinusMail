@@ -22,7 +22,8 @@ const styles = theme => ({
         backgroundColor: 'lightgoldenrodyellow',
         borderBottomWidth: '1px',
         borderBottomStyle: 'solid',
-        borderRadius: '0px 0px 15px 15px'
+        borderRadius: '0px 0px 15px 15px',
+        
         
     },
     listBorder:{
@@ -43,7 +44,8 @@ const styles = theme => ({
         borderRadius: '30px 30px 30px 30px',
         whiteSpace: 'nowrap',
         textAlign: 'right',
-        boxShadow: '0 5px 10px -2px grey'
+        boxShadow: '0 5px 10px -2px grey',
+       
   },
       emailText:{
         textOverflow: 'clip',

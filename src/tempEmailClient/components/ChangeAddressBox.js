@@ -19,7 +19,8 @@ const styles = theme => ({
         borderRadius: '15px 15px 0px 0px',
         backgroundColor: '#00800059',
         marginBottom: '10px',
-        boxShadow: '0 5px 10px -2px grey'
+        boxShadow: '0 5px 10px -2px grey',
+        whiteSpace: 'noWrap'
   },    
 });
 
@@ -71,9 +72,9 @@ class ChangeAddressBox extends React.Component {
                  <ListItemText
                     primary={'My Email Address:'}
                     secondary={
-                    <div>
+                    <div style={{whiteSpace: 'normal'}}>
                         <span>{this.props.myAddress.replace(/@/, " @") + '\n'}</span>
-                        <Link>[change]</Link>
+                        <Link><br/>[change]</Link>
                     </div>
                     }
                 />

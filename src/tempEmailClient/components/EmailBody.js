@@ -21,16 +21,17 @@ const styles = theme => ({
         ...theme.mixins.gutters(),
         paddingTop: theme.spacing.unit * 2,
         paddingBottom: theme.spacing.unit * 2,
-        minHeight: '70vh',
+        minHeight: '50vh',
         maxWidth: '100%',
-        marginRight: '3px',
-        overflow: 'auto'
+        overflow: 'auto',
+        zIndex: '1',
     },
     htmlContent: {
         maxHeight: '100%',
         overflow: 'auto'
     },
     fromField: {
+        zIndex: '1',
         backgroundColor: '#eedcaa',
         borderRadius: '15px 15px 0px 0px',
         marginBottom: '3px',
