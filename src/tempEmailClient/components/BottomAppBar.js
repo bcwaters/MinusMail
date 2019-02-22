@@ -12,7 +12,7 @@ import SvgIcon from '@material-ui/core/SvgIcon';
 import customSVG from './helpers/CustomSVG.js'
 
 const GitIcon = (props) => (
-  <SvgIcon {...props}>
+  <SvgIcon {...props} titleAccess="minus mail">
     <path d= {customSVG.GithubIcon} />
   </SvgIcon>
 );

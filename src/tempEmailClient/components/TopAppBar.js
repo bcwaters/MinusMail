@@ -13,7 +13,7 @@ import { fade } from '@material-ui/core/styles/colorManipulator';
 import ChangeAddressBox from './ChangeAddressBox.js'
 
 const MinusMailIcon = (props) => (
-  <SvgIcon {...props}>
+  <SvgIcon {...props} titleAccess='minus mail'>
     <path d= {customSVG.MinusMailIcon} />
   </SvgIcon>
 );

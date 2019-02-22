@@ -34,7 +34,7 @@ const styles = theme => ({
         ...theme.mixins.toolbar,
         backgroundColor: 'transparent'
         },
-    underAppBar: {
+    appBarShiv: {
         height: '64px',
     },
     sideBar: {
@@ -136,7 +136,9 @@ class EmailViewer extends React.Component {
         <CssBaseline />
       
         <Grid container className={classes.gridContainer} spacing={24}>
-            <Grid item xs={12} className={classes.underAppBar}/>
+            <Grid item xs={12} className={classes.appBarShiv}><span>
+            Minus mail is a free to use temporary email service. It is a single page application so there is no need to reload the page. When an email is sent to you address it instantly appears in your inbox! Sign up quick to any site without the need to give them your actual email address. </span>
+            </Grid>
             <Grid item xs={2} className={classes.sideBar}>
             <InboxSidebar
                 container={this.containerRef}

@@ -25,6 +25,7 @@ const styles = theme => ({
         borderRadius: '0px 0px 15px 15px',      
     },
     listBorder:{
+        backgroundColor: 'palegoldenrod',
         borderRadius: '15px 15px 15px 15px',
         borderWidth: '1px 1px 0px 1px',
         borderStyle: 'solid',
@@ -114,7 +115,7 @@ class InboxSidebar extends React.Component {
                 <div>   
                     <img style=
         {{display:this.state.displayLoader, float: 'left', marginBottom:'5px'}} 
-                        src={loaderIcon}/> 
+                        src={loaderIcon} alt='minus mail'/> 
                     
                 </div>
             </ListItem>

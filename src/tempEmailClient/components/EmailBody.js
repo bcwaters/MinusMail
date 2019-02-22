@@ -36,8 +36,11 @@ const styles = theme => ({
         backgroundColor: 'palegoldenrod',
         borderRadius: '15px 15px 0px 0px',
         marginBottom: '3px',
+        paddingTop: '5px',
+        paddingBottom: '5px',
+        paddingLeft:'24px',
         boxShadow: 'inset -2px 0px 10px 3px #c5bd5d',
-        ...theme.mixins.gutters(),
+        
     },
 });
 
