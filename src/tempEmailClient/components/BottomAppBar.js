@@ -19,11 +19,8 @@ const GitIcon = (props) => (
 
 const styles = {
   root: {
-    position: 'absolute',
-    width:'100%',
-    bottom: '0',
-    left: '0',
-	top: 'auto',
+    marginLeft: '-5%',
+    width:'107.5%',
     backgroundColor: '#aaaaaa'
   },
 };
@@ -42,6 +39,7 @@ class SimpleBottomNavigation extends React.Component {
     const { value } = this.state;
 
     return (
+        <div style={{padding: 0}}>
       <BottomNavigation
         value={value}
         onChange={this.handleChange}
@@ -53,6 +51,7 @@ class SimpleBottomNavigation extends React.Component {
 			label="MinusMail Repo" 
 			icon={<GitIcon />} />
       </BottomNavigation>
+        </div>
     );
   }
 }

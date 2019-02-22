@@ -28,8 +28,8 @@ class Notifier{
                            text :'tips@MinusMail.com',
                           },
 
-                    subject: 'Changing your temporary email address',
-                    text: 'Your current email address is test@MinusMail.com\nClick the change link on the left to create a custom one'} ,
+                    subject: 'How to change your temporary email address',
+                    text: 'Your current email address is default@MinusMail.com\nIn the toolbar above you can click the change link next to your email to update it'} ,
 
            welcomeNotice : {
                     from: {value: [
@@ -52,7 +52,7 @@ class Notifier{
                           },
 
                     subject: 'Support our sponsors',
-                    text: 'Take a look at our sponsors to help keep temp mail free\nSponsor 1 WOW\nSponsor 2 Even Better!\nSponsor 3 Gotta click this\n This is a one time notice. We won\'t fill your inbox up with anything else'},
+                    text: 'Take a look at our sponsors\nSponsor 1 WOW\nSponsor 2 Even Better!\nSponsor 3 Gotta click this\n This is a one time notice. We won\'t fill your inbox up with anything else'},
             updateAddressNotice : {
                     from: {value: [
                             {

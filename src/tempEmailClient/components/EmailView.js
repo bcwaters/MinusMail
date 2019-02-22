@@ -9,6 +9,10 @@ import TopAppBar from './TopAppBar.js'
 import EmailBody from './EmailBody.js'
 import NotifierSystem from './helpers/notices.js'
 import BottomAppBar from './BottomAppBar.js'
+import ChangeAddressBox from './ChangeAddressBox.js'
+import Link from '@material-ui/core/Link';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 
 const Notifier = new NotifierSystem() 
 const styles = theme => ({
@@ -31,7 +35,7 @@ const styles = theme => ({
         backgroundColor: 'transparent'
         },
     underAppBar: {
-        height: '3vh',
+        height: '20vh',
     },
     sideBar: {
         minWidth: '200px'
@@ -41,10 +45,20 @@ const styles = theme => ({
         width:'100%',
         bottom: '0',
         left: '0',
+        padding: 0,
 	   top: 'auto',
      },
     adSpace: {
       },
+     donationBox: {
+        marginTop: '20px',
+        backgroundColor: 'pink',
+        borderRadius: '30px 30px 30px 30px',
+        whiteSpace: 'nowrap',
+        textAlign: 'right',
+        boxShadow: '0 5px 10px -2px grey',
+       
+  },
 });
 
 
@@ -116,11 +130,12 @@ class EmailViewer extends React.Component {
   
     return (
       <div className={classes.root}>
-        <TopAppBar />
+        <TopAppBar myAddress={this.state.myAddress} 
+                    updateMyAddress={this.updateMyAddress}
+        />
         <CssBaseline />
+      
         <Grid container className={classes.gridContainer} spacing={24}>
-        <Grid   className={classes.fillAppBarSpace}/>
-          
             <Grid item xs={12} className={classes.underAppBar}/>
             <Grid item xs={2} className={classes.sideBar}>
             <InboxSidebar
@@ -138,6 +153,16 @@ class EmailViewer extends React.Component {
             />
             </Grid>
             <Grid item xs={2} className={classes.adSpace}> 
+            <div style={{height: '40vh'}}></div>
+            
+            <div className={classes.donationBox} > 
+                <ListItem button style={{whiteSpace: 'nowrap',textAlign: 'right'}}>
+                    <ListItemText 
+                        primary={'Donate to MinusMail'}
+                        secondary={<Link>[donate]</Link>} 
+                    />
+                </ListItem>  
+            </div>
             </Grid>
             <Grid item xs={12} className={classes.footerSpace}>
               <BottomAppBar/>

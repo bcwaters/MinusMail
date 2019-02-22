@@ -11,7 +11,7 @@ import DeleteIcon from '@material-ui/icons/DeleteForever';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
 import Link from '@material-ui/core/Link';
-import ChangeAddressBox from './ChangeAddressBox.js'
+
 
 const styles = theme => ({
     fromText: {
@@ -27,7 +27,7 @@ const styles = theme => ({
         
     },
     listBorder:{
-        borderRadius: '0px 0px 15px 15px',
+        borderRadius: '15px 15px 15px 15px',
         borderWidth: '1px 1px 0px 1px',
         borderStyle: 'solid',
         padding: '0px',
@@ -38,15 +38,6 @@ const styles = theme => ({
     deleteIcon:{
         color: 'DarkRed',
         '&:hover': { color: 'red'}},
-    donationBox: {
-        marginTop: '20px',
-        backgroundColor: 'pink',
-        borderRadius: '30px 30px 30px 30px',
-        whiteSpace: 'nowrap',
-        textAlign: 'right',
-        boxShadow: '0 5px 10px -2px grey',
-       
-  },
       emailText:{
         textOverflow: 'clip',
         whiteSpace: 'nowrap',
@@ -69,18 +60,17 @@ class InboxSidebar extends React.Component {
 	return (
         <div className={classes.root}>
           
-            <ChangeAddressBox
-                myAddress={this.props.myAddress}
-                updateMyAddress={this.props.updateMyAddress}
-            />
+         
 		  
             <List className={classes.listBorder}>
-                 <ListItem style={{ zIndex: '1',
-                                    boxShadow: '0px 2px grey',
+                 <ListItem style={{ paddingBottom: '20px',
+                                    zIndex: '1',
+                                    boxShadow: 'inset hsl(50, 48%, 55%) 1px 0px 9px 3px',
+                                    borderRadius: "15px 15px 0px 0px",
                                     backgroundColor: 'palegoldenrod',
                                     borderWidth: '0px 0px 1px 0px', 
                                     borderStyle: 'solid'}}>
-                    <ListItemText primary='Inbox'/>
+                    
                 </ListItem>
             {  this.props.emailsReceived.length ==0 ?  
                 <ListItem className={classes.listItem}><ListItemText primary='inbox empty'/></ListItem>
@@ -115,14 +105,7 @@ class InboxSidebar extends React.Component {
                 </ListItem>
             ))}
             </List> 
-            <div className={classes.donationBox} > 
-                <ListItem button style={{whiteSpace: 'nowrap',textAlign: 'right'}}>
-                    <ListItemText 
-                        primary={'Donate to MinusMail'}
-                        secondary={<Link>[donate]</Link>} 
-                    />
-                </ListItem>  
-            </div>
+          
         </div>
       
      

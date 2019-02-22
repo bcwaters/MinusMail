@@ -39,7 +39,7 @@ io.on('connection', function(socket){
     socket.join('default');
     socket.on('newAddress', (addressData) => {
         //rooms only inlcude the local portiion of email no domain
-        socket.join(addressData.newAddress.split("@")[0]);
+        socket.join(addressData.newAddress.toLowerCase().split("@")[0]);
         socket.leave(addressData.oldAddress.split("@")[0]);
     })
 });

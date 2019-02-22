@@ -15,18 +15,17 @@ import Link from '@material-ui/core/Link';
 
 const styles = theme => ({
     myAddressBox: {
-        backgroundColor: '#00800059',
-        borderRadius: '15px 15px 0px 0px',
-        backgroundColor: '#00800059',
-        marginBottom: '10px',
-        boxShadow: '0 5px 10px -2px grey',
-        whiteSpace: 'noWrap'
+        backgroundColor: 'transparent',
+        borderRadius: '15px 15px 15px 15px',
+        boxShadow: '1px 1px 30px -4px grey',
   },    
 });
 
 
 class ChangeAddressBox extends React.Component {
     state = {
+        askUserForEmail: "What is the new email you would like?",
+        suggestedEmail: 'new@minusmail.com',
         open: false,
     };
 
@@ -35,12 +34,16 @@ class ChangeAddressBox extends React.Component {
     };
 
     handleClose = () => {
-        this.setState({ open: false });
+        this.setState({ open: false,
+                       askUserForEmail: "What is the new email you would like?"});
     };
 
     //write this method to update modal on invalid
+    //should write a random name generator for suggested emails
     handleInvalidEmail = () => {
-        this.setState({ open: true });
+        this.setState({ open: true, 
+                      askUserForEmail: "Invalid email. A valid email looks like this: youraddress@minusmail.com",
+                      suggestedEmail: 'changethispart@minusmail.com'});
     };
 
     //This state needs to be pull all the way up to Email view
@@ -51,12 +54,18 @@ class ChangeAddressBox extends React.Component {
             this.props.updateMyAddress({newAddress: newAddress, oldAddress:oldAddress})
             this.handleClose();
         }else{
-           this.handInvalidEmail()     
+           this.handleInvalidEmail()     
         }
     };
 
     isValidNewEmail = (newAddress) => {
-        //write a method to validate
+        let name_and_domain = newAddress.split("@");
+        if(name_and_domain.length != 2){
+            return false;
+        }else if(name_and_domain[1].toLowerCase() != 'minusmail.com'){
+            return false;
+        }
+        //TODO I probably want to check for illegal characters in name
         return true
     }
     
@@ -70,11 +79,10 @@ class ChangeAddressBox extends React.Component {
                     style={{ textAlign: 'right', wordWrap: 'break-word', fontWeight: 'bold'}}
             >      
                  <ListItemText
-                    primary={'My Email Address:'}
                     secondary={
-                    <div style={{whiteSpace: 'normal'}}>
-                        <span>{this.props.myAddress.replace(/@/, " @") + '\n'}</span>
-                        <Link><br/>[change]</Link>
+                    <div>
+                        <span>{this.props.myAddress +' '}</span>
+                        <Link>[change]</Link>
                     </div>
                     }
                 />
@@ -91,7 +99,7 @@ class ChangeAddressBox extends React.Component {
           <DialogTitle id="form-dialog-title">Change Email</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              What is the new email you would like?
+              {this.state.askUserForEmail}
             </DialogContentText>
             <TextField
               ref='newEmailAddress'
@@ -101,7 +109,7 @@ class ChangeAddressBox extends React.Component {
               label="Email Address"
               type="email"
               fullWidth
-              defaultValue='new@MinusMail.com'
+              placeholder={this.state.suggestedEmail}
             />
           </DialogContent>
           <DialogActions>

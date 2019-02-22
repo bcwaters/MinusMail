@@ -21,6 +21,7 @@ const styles = theme => ({
         ...theme.mixins.gutters(),
         paddingTop: theme.spacing.unit * 2,
         paddingBottom: theme.spacing.unit * 2,
+         boxShadow: '1px -4px 10px 0px #afaf94',
         minHeight: '50vh',
         maxWidth: '100%',
         overflow: 'auto',
@@ -32,10 +33,10 @@ const styles = theme => ({
     },
     fromField: {
         zIndex: '1',
-        backgroundColor: '#eedcaa',
+        backgroundColor: 'palegoldenrod',
         borderRadius: '15px 15px 0px 0px',
         marginBottom: '3px',
-        boxShadow: '0 5px 10px -2px grey',
+        boxShadow: 'inset -2px 0px 10px 3px #c5bd5d',
         ...theme.mixins.gutters(),
     },
 });
