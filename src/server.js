@@ -32,16 +32,24 @@ const io = require('socket.io')(server);
 
 server.listen(SOCKET_PORT);
 
-
+//TODO make sure that the email is properly formatted here and on client side
+//this is where filewatcher can be updated of new rooms for clients
 io.on('connection', function(socket){
-    socket.on('newAddress', (addressData) => {console.log('new email:' + addressData)})
+    //this is the default room for sockets
+    socket.join('default');
+    socket.on('newAddress', (addressData) => {
+        //rooms only inlcude the local portiion of email no domain
+        socket.join(addressData.newAddress.split("@")[0]);
+        socket.leave(addressData.oldAddress.split("@")[0]);
+    })
 });
 
 //Link socket to filewatcher event
 EmailWatcher.onNewEmail(
     //upon new email use io to emit data to client                   
-    (socketServer, mailObject) => 
-    {socketServer.emit('email', { email: mailObject } )}, io)
+    (socketServer, mailObject, room) => 
+    {socketServer.to(room).emit('email', { email: mailObject } )}
+    , io)
 
 
 app.listen(PORT, () => {

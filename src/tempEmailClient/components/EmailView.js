@@ -53,7 +53,7 @@ class EmailViewer extends React.Component {
     state = {
         emailsReceived: [],  //array of mailobjects
         currentEmail: Notifier.getNotice('welcomeNotice'),//current mailObject
-        myAddress: 'test@MinusMail.com'  //users current email address
+        myAddress: 'default@MinusMail.com'  //users current email address
   };
 
   constructor(props, context) {
@@ -92,12 +92,12 @@ class EmailViewer extends React.Component {
       this.setState({currentEmail: currentEmail})
   }
 
-  updateMyAddress(newAddress){
+  updateMyAddress(updateData){
       //emit new address over socket
-      this.props.setMyAddress(newAddress)
+      this.props.setMyAddress(updateData)
       //update state
-      this.setState({   currentEmail: Notifier.updateAddressNotice(newAddress),
-                        myAddress: newAddress})
+      this.setState({   currentEmail: Notifier.updateAddressNotice(updateData.newAddress),
+                        myAddress: updateData.newAddress})
   }
 
   deleteEmail(index){

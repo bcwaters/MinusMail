@@ -45,10 +45,10 @@ class ChangeAddressBox extends React.Component {
 
     //This state needs to be pull all the way up to Email view
     //This is so that a Notification of update email can be made
-    updateMyEmail = (textFieldId) => {
+    updateMyEmail = (textFieldId, oldAddress) => {
         let newAddress = document.getElementById(textFieldId).value
         if(this.isValidNewEmail(newAddress)){
-            this.props.updateMyAddress(newAddress)
+            this.props.updateMyAddress({newAddress: newAddress, oldAddress:oldAddress})
             this.handleClose();
         }else{
            this.handInvalidEmail()     
@@ -108,7 +108,7 @@ class ChangeAddressBox extends React.Component {
             <Button onClick={this.handleClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={() => (this.updateMyEmail(this.refs.newEmailAddress.props.id))} color="primary">
+            <Button onClick={() => (this.updateMyEmail(this.refs.newEmailAddress.props.id, this.props.myAddress))} color="primary">
               Change
             </Button>
           </DialogActions>

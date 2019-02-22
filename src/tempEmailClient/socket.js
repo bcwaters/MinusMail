@@ -10,9 +10,9 @@ export default function () {
     }
     
     //When the user sets a new email address this functions emits it via socket
-    function setMyAddress(newAddress){
+    function setMyAddress(addressData){
         console.log('setAddress() called in client socket')
-        socket.emit('newAddress', newAddress)
+        socket.emit('newAddress', {newAddress: addressData.newAddress, oldAddress: addressData.oldAddress})
     }
 
     return {
