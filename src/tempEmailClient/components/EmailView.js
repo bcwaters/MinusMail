@@ -35,7 +35,7 @@ const styles = theme => ({
         backgroundColor: 'transparent'
         },
     underAppBar: {
-        height: '20vh',
+        height: '64px',
     },
     sideBar: {
         minWidth: '200px'
@@ -88,12 +88,12 @@ class EmailViewer extends React.Component {
       setTimeout(() => {
             this.addEmailToView(Notifier.getNotice('defaultNotice'))
             },
-                4 * 1000
+                2 * 1000
         );
        setTimeout(() => {
             this.addEmailToView(Notifier.getNotice('supportNotice'))
             },
-                15 * 1000
+                12 * 1000
         );
     }
 
@@ -155,14 +155,6 @@ class EmailViewer extends React.Component {
             <Grid item xs={2} className={classes.adSpace}> 
             <div style={{height: '40vh'}}></div>
             
-            <div className={classes.donationBox} > 
-                <ListItem button style={{whiteSpace: 'nowrap',textAlign: 'right'}}>
-                    <ListItemText 
-                        primary={'Donate to MinusMail'}
-                        secondary={<Link>[donate]</Link>} 
-                    />
-                </ListItem>  
-            </div>
             </Grid>
             <Grid item xs={12} className={classes.footerSpace}>
               <BottomAppBar/>
@@ -173,6 +165,17 @@ class EmailViewer extends React.Component {
     );
   }
 }
+
+/* add donate button later
+    <div className={classes.donationBox} > 
+                <ListItem button style={{whiteSpace: 'nowrap',textAlign: 'right'}}>
+                    <ListItemText 
+                        primary={'Donate to MinusMail'}
+                        secondary={<Link>[donate]</Link>} 
+                    />
+                </ListItem>  
+            </div>
+*/
 
 EmailViewer.propTypes = {
   classes: PropTypes.object.isRequired,

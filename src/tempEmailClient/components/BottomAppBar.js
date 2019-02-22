@@ -17,10 +17,11 @@ const GitIcon = (props) => (
   </SvgIcon>
 );
 
+//TODO find a real fix for this footer width....
 const styles = {
   root: {
     marginLeft: '-5%',
-    width:'107.5%',
+    width:'107.1%',
     backgroundColor: '#aaaaaa'
   },
 };

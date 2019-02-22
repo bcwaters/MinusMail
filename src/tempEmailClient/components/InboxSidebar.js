@@ -11,7 +11,7 @@ import DeleteIcon from '@material-ui/icons/DeleteForever';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
 import Link from '@material-ui/core/Link';
-
+import loaderIcon from '../res/loader.gif';
 
 const styles = theme => ({
     fromText: {
@@ -22,9 +22,7 @@ const styles = theme => ({
         backgroundColor: 'lightgoldenrodyellow',
         borderBottomWidth: '1px',
         borderBottomStyle: 'solid',
-        borderRadius: '0px 0px 15px 15px',
-        
-        
+        borderRadius: '0px 0px 15px 15px',      
     },
     listBorder:{
         borderRadius: '15px 15px 15px 15px',
@@ -45,12 +43,55 @@ const styles = theme => ({
     },
     root:{
         paddingLeft: '10px' 
+    },
+    loadingText:{
+        display: 'block',
+        float: 'right',
+        fontFamily:'"Courier", "Arial", "Century Schoolbook L"',
+        paddingLeft:'5px',
+        paddingTop: '5px',
+        fontWeight: 'bold'
+    },
+    loadingIcon:{
+        display: "block",
+        float: 'left',
+        marginBottom: '5px',
     }
+    
 });
 
+/*  Maybe user doesnt need to have the spinner explained
+<span   style={{display:this.state.displayLoader}}
+                            className={classes.loadingText}>
+                            checking mail
+                    </span>
+
+*/
 //considering changing this into drop down menu
 class InboxSidebar extends React.Component {
-	
+
+    state={displayLoader: 'block'}
+    
+    componentDidMount(){
+     setInterval(() => {
+                if(this.state.displayLoader=='none'){
+                    this.setState({displayLoader: 'block'}) 
+                }else{
+                    this.setState({displayLoader: 'none'})
+                }
+            },
+            9 * 1000
+        );
+         setInterval(() => {
+                if(this.state.displayLoader=='block'){
+                    this.setState({displayLoader: 'none'}) 
+                }
+            },
+            2 * 1000
+        
+        );
+    }
+
 	render()
 	{
 	const { classes } = this.props;
@@ -59,19 +100,25 @@ class InboxSidebar extends React.Component {
     //TODO update the css for the from field
 	return (
         <div className={classes.root}>
-          
-         
-		  
             <List className={classes.listBorder}>
-                 <ListItem style={{ paddingBottom: '20px',
+                 
+            <ListItem style={{ paddingBottom: '0px',
                                     zIndex: '1',
                                     boxShadow: 'inset hsl(50, 48%, 55%) 1px 0px 9px 3px',
                                     borderRadius: "15px 15px 0px 0px",
                                     backgroundColor: 'palegoldenrod',
                                     borderWidth: '0px 0px 1px 0px', 
+                                    minHeight: '40px',
                                     borderStyle: 'solid'}}>
                     
-                </ListItem>
+                <div>   
+                    <img style=
+        {{display:this.state.displayLoader, float: 'left', marginBottom:'5px'}} 
+                        src={loaderIcon}/> 
+                    
+                </div>
+            </ListItem>
+        
             {  this.props.emailsReceived.length ==0 ?  
                 <ListItem className={classes.listItem}><ListItemText primary='inbox empty'/></ListItem>
               : 
