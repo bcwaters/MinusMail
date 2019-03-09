@@ -2,7 +2,7 @@ const io = require('socket.io-client')
 
 export default function () {
   //TODO this url needs to be set to env variable to deploy on server
-    const socket = io.connect('http://localhost:3001')
+    const socket = io.connect('http://minusmail.com:3001')
    
     function registerNewEmailHandler(doThisWithEmail) {
         console.log('registerHandler called in client socket')
