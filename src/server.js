@@ -76,10 +76,17 @@ EmailWatcher.onNewEmail(
     , (mailObject) => (MongoDB.insertEmail(mailObject))
 )
 
+router.get('/api/callMongo', (req, res) => {
+    //call DB and send data
+    MongoDB.getComments('somewhere.com', (result)=>{res.json(result)})
+})
 
-//MongoDB.dropCollection('emails');
-//MongoDB.createCollection('emails')
-//MongoDB.getEmails('default');
+
+MongoDB.createCollection('comments')
+MongoDB.insertComment({text: 'This is a comment that has been inserted into the mongoDB. it was the first comment to be inserted.'})
+MongoDB.insertComment({text: 'This is another comment. 2nd one inserted'})
+MongoDB.insertComment({text: 'This is the 3rd comment. Adding filler to make it longer\n\n\n\n\n\alsdfladksf;akjsdf;lakjsdf;lasdf fadsjladfkjs;asdkfj;asfdas'})
+
 
 app.listen(PORT, () => {
   console.log(`SSR running on port ${PORT}`)
