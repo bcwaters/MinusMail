@@ -2,7 +2,7 @@ import chokidar from 'chokidar'
 import fs from 'fs'
 import Path from 'path'
 const simpleParser = require("mailparser").simpleParser;
-var url = "mongodb://localhost:27017/";
+
 class EmailWatcher{
     
     constructor(){
@@ -11,10 +11,10 @@ class EmailWatcher{
                     {ignoreInitial:true,
                      ignored: /[\/\\]\./,
                      awaitWriteFinish:true })
-   // this.insertEmailIntoDB.bind(this)();
+
   }
     //server.js provides socket behavior to this method
-    onNewEmail(emitEmailEvent, SocketServer, mongoInsertObject){
+    onNewEmail(emitEmailEvent, SocketServer){
         //Linking socket to server file directory
         this.watcher.on('all', (event, path) => {
             //for windows change event is called when new file is written
@@ -27,15 +27,11 @@ class EmailWatcher{
                     if (!err) { //parse raw email into mailobject.
                                 simpleParser(data)
                                 .then(mailObject => {
-                                //insert the mail object into MongoDB
-                                //set the email room as key for mongodb searching
-                                mailObject.userAddress = emailRoom;
-                                mongoInsertObject(mailObject)
                                 //emit mail object with socket server
                                 emitEmailEvent(SocketServer, mailObject, emailRoom);  
                             })
                                 .catch(
-                                err => {console.log('couldnt parse sneding raw data' + err)
+                                err => {console.log('couldnt parse sneding raw data')
                                 emitEmailEvent(SocketServer, {text :data}, emailRoom);});
                         
                     }else{
@@ -44,9 +40,7 @@ class EmailWatcher{
                 });
             }
         });
-    }
-    
-    
+    }  
 }
 
 export default EmailWatcher

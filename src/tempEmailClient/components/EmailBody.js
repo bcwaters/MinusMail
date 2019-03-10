@@ -21,7 +21,7 @@ const styles = theme => ({
         ...theme.mixins.gutters(),
         paddingTop: theme.spacing.unit * 2,
         paddingBottom: theme.spacing.unit * 2,
-       
+         boxShadow: '1px -4px 10px 0px #afaf94',
         minHeight: '50vh',
         maxWidth: '100%',
         overflow: 'auto',
@@ -32,13 +32,14 @@ const styles = theme => ({
         overflow: 'auto'
     },
     fromField: {
-        backgroundColor: '#cccccc',
         zIndex: '1',
+        backgroundColor: 'palegoldenrod',
+        borderRadius: '15px 15px 0px 0px',
         marginBottom: '3px',
         paddingTop: '5px',
         paddingBottom: '5px',
         paddingLeft:'24px',
-    
+        boxShadow: 'inset -2px 0px 10px 3px #c5bd5d',
         
     },
 });
@@ -52,20 +53,15 @@ class EmailBody extends React.Component {
 	return (
         <main className={classes.content}>
             <div className={classes.emailContainer}>
-               <div className={classes.fromField} >
+                <div className={classes.fromField} >
                     <Typography noWrap={true} variant='subtitle1'>
-                        
-                            {<span style={{fontWeight:'bold'}}>From: </span>
-        } {this.props.currentEmail.from.text}
-                          
+                        {this.props.currentEmail.from.text} 
                     </Typography>
                     <Typography noWrap={true} variant='subtitle2'>
-                        {<span style={{fontWeight:'bold'}}>Subject: </span>
-        }{this.props.currentEmail.subject} 
+                        {this.props.currentEmail.subject} 
                     </Typography>
                 </div>
                 <Paper className={classes.emailPaper}>
-         
                     {this.props.currentEmail.html ?
                         <iframe 
                             srcdoc={this.props.currentEmail.html}

@@ -16,6 +16,7 @@ import Link from '@material-ui/core/Link';
 const styles = theme => ({
     myAddressBox: {
         backgroundColor: 'transparent',
+        borderRadius: '15px 15px 15px 15px',
         boxShadow: '1px 1px 30px -4px grey',
   },    
 });

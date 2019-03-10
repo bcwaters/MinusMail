@@ -1,24 +1,10 @@
 var MongoClient = require('mongodb').MongoClient;
 const url = "mongodb://localhost:27017/";
-const dbName = "minusmailDB"
+const dbName = "yakmos"
+let testCollection = 'comments'
 
-
-
-//insert item into db
-//MongoClient.connect(url, function(err, db) {
-//  if (err) throw err;
-//  var dbo = db.db("minusmailDB");
-//  var myobj = { name: "Company Inc", address: "Highway 37" };
-//  dbo.collection("emails").insertOne(myobj, function(err, res) {
-//    if (err) throw err;
-//    console.log("1 document inserted");
-//    db.close();
-//  });
-//
-//});
 class MongoDB{
     
-     
     static createCollection(collectionName){
         MongoClient.connect(url, function(err, db) {
             if (err) throw err;
@@ -31,13 +17,13 @@ class MongoDB{
         });
     }
     
-    static insertEmail(mailObject){
+    static insertComment(commentObject){
         MongoClient.connect(url, function(err, db) {
             if (err) {
                 console.log('error connecting') 
                 throw err;};
             var dbo = db.db(dbName);
-            dbo.collection("emails").insertOne(mailObject, function(err, res) {
+            dbo.collection(testCollection).insertOne(commentObject, function(err, res) {
             if (err) {
                 console.log('error inserting')
                 throw err;
@@ -48,16 +34,16 @@ class MongoDB{
         });
     }
     
-    //TODO this function shouldnt need to know about socket... fix teh callback
-    static getEmails(userAddress, callback, socket){
+  
+    static getComments(originUrl, callback){
         MongoClient.connect(url, function(err, db) {
             if (err) throw err;
             var dbo = db.db(dbName);
-            var query = { userAddress: userAddress };
-            dbo.collection("emails").find(query).toArray(function(err, result) {
+            var query = { originUrl: originUrl };
+            dbo.collection(testCollection).find({}).toArray(function(err, result) {
             if (err) throw err;
-            console.log('retrieved emails for:' + userAddress + ' #: ' + result.length);
-            callback(result, socket, userAddress);
+            console.log('retrieved comments for:' + originUrl + ' #: ' + result.length);
+            callback(result);
             db.close();
             });
         });
@@ -66,18 +52,17 @@ class MongoDB{
     
     static dropCollection(collectionName){
         MongoClient.connect(url, function(err, db) {
-        if (err) throw err;
-        var dbo = db.db(dbName);
-        dbo.dropCollection(collectionName, function(err, delOK) {
             if (err) throw err;
-            if (delOK) console.log("Collection deleted");
-            db.close();
-  });
-});
+            var dbo = db.db(dbName);
+            dbo.dropCollection(collectionName, function(err, delOK) {
+                if (err) throw err;
+                if (delOK) console.log("Collection deleted");
+                db.close();
+            });
+        });
         
     }
     
-
 }
 
-export default MongoDB
+module.exports = MongoDB;

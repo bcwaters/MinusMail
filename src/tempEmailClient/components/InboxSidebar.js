@@ -19,12 +19,16 @@ const styles = theme => ({
         padding: '0px', 
         minWidth:'0px'},
     listItem:{
-        backgroundColor: '#ffffff',
+        backgroundColor: 'lightgoldenrodyellow',
         borderBottomWidth: '1px',
         borderBottomStyle: 'solid',
         borderRadius: '0px 0px 15px 15px',      
     },
     listBorder:{
+        backgroundColor: 'palegoldenrod',
+        borderRadius: '15px 15px 15px 15px',
+        borderWidth: '1px 1px 0px 1px',
+        borderStyle: 'solid',
         padding: '0px',
     },
     inboxIcon:{
@@ -101,9 +105,9 @@ class InboxSidebar extends React.Component {
                  
             <ListItem style={{ paddingBottom: '0px',
                                     zIndex: '1',
-                               
-                                   
-                                    backgroundColor: '#cccccc',
+                                    boxShadow: 'inset hsl(50, 48%, 55%) 1px 0px 9px 3px',
+                                    borderRadius: "15px 15px 0px 0px",
+                                    backgroundColor: 'palegoldenrod',
                                     borderWidth: '0px 0px 1px 0px', 
                                     minHeight: '40px',
                                     borderStyle: 'solid'}}>
